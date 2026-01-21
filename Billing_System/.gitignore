@@ -1,0 +1,35 @@
+# Compiled executables
+*.exe
+*.out
+*.app
+
+# Compiled object files
+*.o
+*.obj
+
+# Compiled libraries
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Output directory
+output/
+
+# VS Code settings (optional - you might want to keep these)
+.vscode/
+
+# MinGW/GCC generated files
+*.stackdump
+
+# Temporary data files (consider if you want to ignore this)
+# billing.txt
+# billing_temp.txt
+
