@@ -1,39 +1,45 @@
-#include "headers/Common.h"
-#include "headers/Bill.h"
-#include "headers/BillingOperations.h"
+#include "Common.h"
+#include "Bill.h"
+#include "BillingOperations.h"
 
 int main() {
-    Bill b;
+    // Load inventory at startup
+    CLEAR_SCREEN();
+    std::cout << "\tInitializing Billing System..." << std::endl;
+    loadInventory();
+    
+    bool shouldExit = false;
+    while (!shouldExit) {
+        CLEAR_SCREEN();
 
-    bool exit = false;
-    while(!exit){
-        system("cls");
-        int val;
+        std::cout << "\tWelcome To Super Market Billing System" << std::endl;
+        std::cout << "\t**************************************" << std::endl;
+        std::cout << "\t\t1.Add Item." << std::endl;
+        std::cout << "\t\t2.Print Bill." << std::endl;
+        std::cout << "\t\t3.Exit." << std::endl;
+        
+        int userChoice = getValidIntInput("\t\tEnter Choice: ", BillingConstants::MIN_CHOICE);
 
-        cout<<"\tWelcome To Super Market Billing System"<<endl;
-        cout<<"\t**************************************"<<endl;
-        cout<<"\t\t1.Add Item."<<endl;
-        cout<<"\t\t2.Print Bill."<<endl;
-        cout<<"\t\t3.Exit."<<endl;
-        cout<<"\t\tEnter Choice: ";
-        cin>>val;
-
-        if(val==1){
-            system("cls");
-            addItem(b);	
-            Sleep(3000);
+        if (userChoice == 1) {
+            CLEAR_SCREEN();
+            addItem();
+            sleepMs(BillingConstants::MEDIUM_DELAY_MS);
         }
-
-        else if(val==2){
+        else if (userChoice == 2) {
             printBill();
         }
-
-        else if(val==3){
-            system("cls");
-            exit = true;
-            cout<<"\tGood Luck!"<<endl;
-            Sleep(3000);
-        }	
+        else if (userChoice == 3) {
+            CLEAR_SCREEN();
+            shouldExit = true;
+            std::cout << "\tSaving inventory..." << std::endl;
+            saveInventory();
+            std::cout << "\tGood Luck!" << std::endl;
+            sleepMs(BillingConstants::MEDIUM_DELAY_MS);
+        }
+        else {
+            std::cout << "\tError: Please enter 1, 2, or 3." << std::endl;
+            sleepMs(BillingConstants::SHORT_DELAY_MS);
+        }
     }
 
     return 0;

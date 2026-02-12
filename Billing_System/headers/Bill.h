@@ -5,19 +5,19 @@
 
 class Bill {
 private:
-    string Item;
+    std::string Item;
     int Rate, Quantity;
 
 public:
     Bill();
     
-    void setItem(string item);
+    void setItem(const std::string& item);
     void setRate(int rate);
     void setQuant(int quant);
     
-    string getItem();
-    int getRate();
-    int getQuant();
+    const std::string& getItem() const;
+    int getRate() const;
+    int getQuant() const;
 };
 
 #endif

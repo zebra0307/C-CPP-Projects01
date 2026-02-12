@@ -6,3 +6,7 @@
 
 	books : 100 : 60
 
+	apple juice : 30 : 550
+
+	harry potter : 4000 : 20
+
